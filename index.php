@@ -1,12 +1,17 @@
 <?php
 include_once 'db.php';
 
-	/*	$log = Escape::bdd($_POST[login]);
+try {
 		$db = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
 		$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-		$stmt = $db->prepare('SELECT COUNT(*) FROM membres WHERE login = :login');
-		$stmt->bindParam(':login', $log, PDO::PARAM_STR);
-		$stmt->execute(); */
+		$stmt = $db->prepare('SELECT * FROM pokemon WHERE id = 2');
+		$stmt->execute();
+} catch (PDOException $e) {
+	echo $sql.'<br>'.$e->getMessage();
+}
+$sql = $stmt->fetchAll();
+
+$db = null;
 
 ?>
 <!DOCTYPE html>
@@ -42,7 +47,7 @@ include_once 'db.php';
 		<div id="buttontopPicture2"></div>
 	  </div>
 	  <div id="picture">
-		<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/200653/psykokwak.gif" alt="psykokwak" height="170" />
+	  <img class="picture3" src="<?php echo $sql[0][picture] ?>" alt="psykokwak" height="170" />
 	  </div>
 	  <div id="buttonbottomPicture"></div>
 	  <div id="speakers">
@@ -75,12 +80,12 @@ include_once 'db.php';
   </div>
   <div id="right">
 	<div id="stats">
-	  <strong>Name :</strong> Psyduck<br/>
-	  <strong>Type :</strong> Water<br/>
-	  <strong>Height :</strong> 2'072''<br/>
-	  <strong>Weight :</strong> 43.2 lbs.<br/><br/>
+	<strong>Name :</strong> <?php echo $sql[0][name] ?> <br/>
+	  <strong>Type :</strong> <?php echo $sql[0][type] ?> <br/>
+	  <strong>Height :</strong> <?php echo $sql[0][height] ?> <br/>
+	  <strong>Weight :</strong> <?php echo $sql[0][weight] ?> <br/><br/>
 	  <strong>The duck Pokemon</strong><br/>
-	  Uses mysterious powers to perform various attacks.
+ 		<?php echo $sql[0][content] ?> 
 	</div>
 	<div id="blueButtons1">
 	  <div class="blueButton"></div>

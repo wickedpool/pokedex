@@ -14,7 +14,7 @@ try {
 	$type = "Electric";
 	$height = "0,4";
 	$weight = "6,0";
-	$content = "Les jours d'orages, on peut apercevoir des Pikachu regroupés en haut des arbres ou des poteaux. Ces Pokémons attendent patiemment que la foudre leur tombe dessus, pour pouvoir recharger au maximum leur réserve d'électricité. Quand il attaque, des milliers de volts sortent par ses joues rouges.";
+	$content = "Les jours d'orages, on peut apercevoir des Pikachu regroupés en haut des arbres ou des poteaux. Ces Pokémons attendent patiemment que la foudre leur tombe dessus, pour pouvoir recharger au maximum leur réserve d'électricité.";
 	$level = "3";
 	$picture = "./img/pikatchu.png";
 	$stmt = $db->prepare('INSERT INTO pokemon (name, type, height, weight, content, level, picture) VALUES (:name, :type, :height, :weight, :content, :level, :picture)');
@@ -27,13 +27,13 @@ try {
 	$stmt->bindParam(':picture', $picture, PDO::PARAM_STR);
 	$stmt->execute();
 	/* other one */
-	$name = "Pikachu";
-	$type = "Electric";
-	$height = "0,4";
-	$weight = "6,0";
-	$content = "Les jours d'orages, on peut apercevoir des Pikachu regroupés en haut des arbres ou des poteaux. Ces Pokémons attendent patiemment que la foudre leur tombe dessus, pour pouvoir recharger au maximum leur réserve d'électricité. Quand il attaque, des milliers de volts sortent par ses joues rouges.";
+	$name = "salameche";
+	$type = "feu";
+	$height = "0,6";
+	$weight = "8,5";
+	$content = "Salamèche est un Pokémon bipède et reptilien avec un corps orange, tandis que son ventre et la plante de ses pieds sont couleur jaune.";
 	$level = "3";
-	$picture = "./img/pikatchu.png";
+	$picture = "./img/salameche.png";
 	$stmt = $db->prepare('INSERT INTO pokemon (name, type, height, weight, content, level, picture) VALUES (:name, :type, :height, :weight, :content, :level, :picture)');
 	$stmt->bindParam(':name', $name, PDO::PARAM_STR);
 	$stmt->bindParam(':type', $type, PDO::PARAM_STR);

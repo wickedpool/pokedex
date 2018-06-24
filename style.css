@@ -1021,3 +1021,19 @@
 	}
 
 }
+
+.picture3 {
+	animation: leaves 0.7s ease infinite;
+}
+
+@keyframes leaves {
+    0% {
+        transform: scale(0.7);
+    }
+	50% {
+        transform: scale(0.8);
+	}
+    100% {
+        transform: scale(0.9);
+    }
+}
