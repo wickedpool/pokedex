@@ -180,7 +180,7 @@ try {
 	$stmt->bindParam(':picture', $picture, PDO::PARAM_STR);
 	$stmt->execute();
 } catch (PDOException $e) {
-	echo $sql.'<br>'.$e->getMessage();
+	echo $e->getMessage();
 }
 $db = null;
 ?>
