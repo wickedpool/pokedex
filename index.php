@@ -4,12 +4,19 @@ include_once 'db.php';
 try {
 		$db = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
 		$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-		$stmt = $db->prepare('SELECT * FROM pokemon WHERE id = 2');
+		$stmt = $db->prepare('SELECT * FROM pokemon');
 		$stmt->execute();
 } catch (PDOException $e) {
 	echo $sql.'<br>'.$e->getMessage();
 }
+
 $sql = $stmt->fetchAll();
+
+if ($_GET[pokemon]) {
+	$nb = $_GET[pokemon];
+} else {
+	$nb = 0;
+}
 
 $db = null;
 
@@ -18,10 +25,11 @@ $db = null;
 <html>
   <head>
 	<meta charset="utf-8">
-	<title>Ma page de test</title>
+	<title>pokedex</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
   </head>
   <body>
+<a class="addpokemon" href="add_pokemon.php">ADD POKEMON</a>
 <div id="pokedex">
   <div id="left">
 	<div id="logo"></div>
@@ -47,7 +55,7 @@ $db = null;
 		<div id="buttontopPicture2"></div>
 	  </div>
 	  <div id="picture">
-	  <img class="picture3" src="<?php echo $sql[0][picture] ?>" alt="psykokwak" height="170" />
+	  <img class="picture3" src="<?php echo $sql[$nb][picture] ?>" alt="psykokwak" height="170" />
 	  </div>
 	  <div id="buttonbottomPicture"></div>
 	  <div id="speakers">
@@ -80,26 +88,26 @@ $db = null;
   </div>
   <div id="right">
 	<div id="stats">
-	<strong>Name :</strong> <?php echo $sql[0][name] ?> <br/>
-	  <strong>Type :</strong> <?php echo $sql[0][type] ?> <br/>
-	  <strong>Height :</strong> <?php echo $sql[0][height] ?> <br/>
-	  <strong>Weight :</strong> <?php echo $sql[0][weight] ?> <br/><br/>
+	<strong>Name :</strong> <?php echo $sql[$nb][name] ?> <br/>
+	  <strong>Type :</strong> <?php echo $sql[$nb][type] ?> <br/>
+	  <strong>Height :</strong> <?php echo $sql[$nb][height] ?> <br/>
+	  <strong>Weight :</strong> <?php echo $sql[$nb][weight] ?> <br/><br/>
 	  <strong>The duck Pokemon</strong><br/>
- 		<?php echo $sql[0][content] ?> 
+ 		<?php echo $sql[$nb][content] ?> 
 	</div>
 	<div id="blueButtons1">
-	  <div class="blueButton"></div>
-	  <div class="blueButton"></div>
-	  <div class="blueButton"></div>
-	  <div class="blueButton"></div>
-	  <div class="blueButton"></div>
+	  <div onClick="window.location='http://localhost:8888/pokedex2/index.php?pokemon=0';" class="blueButton"></div>
+	  <div onClick="window.location='http://localhost:8888/pokedex2/index.php?pokemon=1';" class="blueButton"></div>
+	  <div onClick="window.location='http://localhost:8888/pokedex2/index.php?pokemon=2';" class="blueButton"></div>
+	  <div onClick="window.location='http://localhost:8888/pokedex2/index.php?pokemon=3';" class="blueButton"></div>
+	  <div onClick="window.location='http://localhost:8888/pokedex2/index.php?pokemon=4';" class="blueButton"></div>
 	</div>
 	<div id="blueButtons2">
-	  <div class="blueButton"></div>
-	  <div class="blueButton"></div>
-	  <div class="blueButton"></div>
-	  <div class="blueButton"></div>
-	  <div class="blueButton"></div>
+	  <div onClick="window.location='http://localhost:8888/pokedex2/index.php?pokemon=5';" class="blueButton"></div>
+	  <div onClick="window.location='http://localhost:8888/pokedex2/index.php?pokemon=6';" class="blueButton"></div>
+	  <div onClick="window.location='http://localhost:8888/pokedex2/index.php?pokemon=7';" class="blueButton"></div>
+	  <div onClick="window.location='http://localhost:8888/pokedex2/index.php?pokemon=8';" class="blueButton"></div>
+	  <div onClick="window.location='http://localhost:8888/pokedex2/index.php?pokemon=9';" class="blueButton"></div>
 	</div>
 	<div id="miniButtonGlass4"></div>
 	<div id="miniButtonGlass5"></div>
